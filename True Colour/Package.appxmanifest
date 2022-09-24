@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
+  <Identity Name="23237ChittakshKhadse.TrueColour" Publisher="CN=9E7ACF4E-DABC-48F5-9436-21CA56D1BFA3" Version="1.2.0.3" />
+  <mp:PhoneIdentity PhoneProductId="55597034-3069-48c0-81f0-9fa5d85489fb" PhonePublisherId="b3c023b6-f59b-40dc-9b23-e3f97a71b3c4" />
+  <Properties>
+    <DisplayName>True Colour</DisplayName>
+    <PublisherDisplayName>Chittaksh Khadse</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.1</OSMinVersion>
+    <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="AGHost.exe" EntryPoint="MainPage.xaml">
+      <m3:VisualElements DisplayName="True Colour" Square150x150Logo="Assets\SquareTile150x150.png" Square44x44Logo="Assets\Logo.png" Description="True Colour" ForegroundText="light" BackgroundColor="#464646" ToastCapable="false">
+        <m3:DefaultTile Square71x71Logo="Assets\SquareTile71x71.png">
+        </m3:DefaultTile>
+        <m3:SplashScreen Image="Assets\SplashScreen.png" />
+      </m3:VisualElements>
+    </Application>
+  </Applications>
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>AgHostSvcs.dll</Path>
+        <ActivatableClass ActivatableClassId="AgHost.BackgroundTask" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+  </Extensions>
+  <Capabilities>
+    <Capability Name="internetClientServer" />
+  </Capabilities>
+</Package>

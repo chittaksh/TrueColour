@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
+  <DefaultLanguage xmlns="" code="en-US" />
+  <Languages xmlns="">
+    <Language code="es-ES" />
+    <Language code="zh" />
+    <Language code="nl" />
+    <Language code="fr" />
+    <Language code="de" />
+    <Language code="pt" />
+    <Language code="ru" />
+  </Languages>
+  <App xmlns="" ProductID="{55597034-3069-48c0-81f0-9fa5d85489fb}" Title="True Colour" RuntimeType="Silverlight" Version="1.2.0.3" Genre="apps.normal" Author="Chittaksh Khadse" Description="Sample description" SDOptOut="false" BackUpOptOut="false" Publisher="Chittaksh Khadse" PublisherID="{b3c023b6-f59b-40dc-9b23-e3f97a71b3c4}">
+    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
+    <Capabilities>
+      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+      <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
+      <Capability Name="ID_CAP_IDENTITY_USER" />
+      <Capability Name="ID_CAP_PHONEDIALER" />
+    </Capabilities>
+    <Tasks>
+      <DefaultTask Name="_default" NavigationPage="MainPage.xaml" ActivationPolicy="Resume" />
+    </Tasks>
+    <Tokens>
+      <PrimaryToken TokenID="TrueColourToken" TaskName="_default">
+        <TemplateFlip>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <Count>0</Count>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
+          <Title>True Colour</Title>
+          <BackContent>
+          </BackContent>
+          <BackBackgroundImageURI>
+          </BackBackgroundImageURI>
+          <BackTitle>
+          </BackTitle>
+          <DeviceLockImageURI>
+          </DeviceLockImageURI>
+          <HasLarge>
+          </HasLarge>
+        </TemplateFlip>
+      </PrimaryToken>
+    </Tokens>
+    <ScreenResolutions>
+      <ScreenResolution Name="ID_RESOLUTION_WVGA" />
+      <ScreenResolution Name="ID_RESOLUTION_WXGA" />
+      <ScreenResolution Name="ID_RESOLUTION_HD720P" />
+    </ScreenResolutions>
+  </App>
+</Deployment>

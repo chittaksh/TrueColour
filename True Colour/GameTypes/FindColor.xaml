@@ -1,0 +1,118 @@
+﻿<phone:PhoneApplicationPage
+    xmlns:Local="clr-namespace:TrueColour"
+    xmlns:Google="clr-namespace:GoogleAds;assembly=GoogleAds"
+    xmlns:UserControl="clr-namespace:TrueColour.Controls"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:WindowsPhone8="clr-namespace:Microsoft.AdMediator.WindowsPhone8;assembly=Microsoft.AdMediator.WindowsPhone8"
+    x:Class="TrueColour.GameTypes.FindColor"
+    FontFamily="Calibri"
+    FontWeight="Bold"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <phone:PhoneApplicationPage.Resources>
+        <Storyboard x:Name="CountDown" Completed="CountDown_Completed" >
+            <DoubleAnimation Storyboard.TargetName="txtCount"
+        		Storyboard.TargetProperty="Opacity"
+        		Duration="0:0:1" From="1.0" To="0.1"
+        		RepeatBehavior="4x" />
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="txtCount" Storyboard.TargetProperty="(TextBlock.Text)">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="3"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="2"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:2" Value="1"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:3" Value="Go!"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="StoryboardRing" Completed="ColorCircle_Completed">
+            <DoubleAnimation x:Name="DoubleAnimationRing" 
+        		Storyboard.TargetName="ColorRing"
+        		Storyboard.TargetProperty="Percentage"
+        		From="0" To="100"
+                             />
+        </Storyboard>
+    </phone:PhoneApplicationPage.Resources>
+    <phone:PhoneApplicationPage.FontSize>
+        <StaticResource ResourceKey="PhoneFontSizeNormal"/>
+    </phone:PhoneApplicationPage.FontSize>
+    <phone:PhoneApplicationPage.Foreground>
+        <StaticResource ResourceKey="ApplicationForegroundBrush"/>
+    </phone:PhoneApplicationPage.Foreground>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="txtCount" VerticalAlignment="Center" HorizontalAlignment="Center" 
+			Grid.ColumnSpan="2" Grid.RowSpan="4" 
+			Visibility="Visible" FontSize="100" />
+
+        <Image x:Name="imgTopScore" Grid.Row="0" Grid.Column="0"
+			HorizontalAlignment="Left" VerticalAlignment="Center"
+			Source="/Images/ColorCircle.png"
+			Margin="5 5 0 0" Visibility="Collapsed" />
+
+        <TextBlock x:Name="txtTopScore" Grid.Row="0" Grid.Column="0" Foreground="Yellow"
+			HorizontalAlignment="Left" VerticalAlignment="Center" TextAlignment="Center"
+			Margin="20 0 0 0" Visibility="Collapsed" FontSize="50" Text="0" Width="60" />
+
+        <TextBlock x:Name="txtCurrentScore" Grid.Row="0" Grid.Column="1"
+			HorizontalAlignment="Right" VerticalAlignment="Center"
+			Margin="0 15 25 0" Visibility="Collapsed" FontSize="50" Text="0" />
+
+        <UserControl:TheRing x:Name="ColorRing" Grid.ColumnSpan="2" Grid.RowSpan="2"
+			Grid.Row="1" Grid.Column="0"
+			Radius="150" Visibility="Collapsed"/>
+
+        <Grid x:Name="gridColors" Grid.Row="3" Grid.ColumnSpan="2" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Ellipse Fill="Red" Height="90" Width="90" Grid.Row="0"
+				Tap="Ellipse_Tap" Grid.Column="0" />
+            <Ellipse Fill="Blue" Height="90" Width="90" Grid.Row="0"  
+				Tap="Ellipse_Tap" Grid.Column="1" />
+            <Ellipse Fill="Green" Height="90" Width="90" Grid.Row="0"  
+				Tap="Ellipse_Tap" Grid.Column="2" />
+            <Ellipse Fill="Yellow" Height="90" Width="90" Grid.Row="0"  
+				Tap="Ellipse_Tap" Grid.Column="3" />
+            <Ellipse Fill="Brown" Height="90" Width="90" Grid.Row="1"  
+				Tap="Ellipse_Tap" Grid.Column="0" />
+            <Ellipse Fill="Orange" Height="90" Width="90" Grid.Row="1"  
+				Tap="Ellipse_Tap" Grid.Column="1" />
+            <Ellipse Fill="Purple" Height="90" Width="90" Grid.Row="1"  
+				Tap="Ellipse_Tap" Grid.Column="2" />
+            <Ellipse Fill="Pink" Height="90" Width="90" Grid.Row="1"  
+				Tap="Ellipse_Tap" Grid.Column="3" />
+        </Grid>
+
+        <WindowsPhone8:AdMediatorControl x:Name="FindColorAd"
+         HorizontalAlignment="Center" VerticalAlignment="Center"
+         Id="AdMediator-Id-BAA69D9E-3B86-47AB-8DF7-F0E33CEF84BE" 
+         Width="480" Height="80" Grid.Row="4" Grid.ColumnSpan="2"/>
+
+
+    </Grid>
+
+</phone:PhoneApplicationPage>
